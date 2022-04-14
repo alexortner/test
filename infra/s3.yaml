@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "S3 Bucket Alex"
+
+Parameters:
+  owner:
+    Type: "String"
+    Default: "ortner"
+
+  environment:
+    Type: "String"
+    AllowedPattern: "^[a-zA-Z0-9]+[a-zA-Z0-9-]+[a-zA-Z0-9]+$"
+    Default: "dev"
+
+Resources:
+  imageBucket:
+    Type: "AWS::S3::Bucket"
+    Description: "S3 Bucket for Images"
+    Properties:
+      BucketName: !Sub "${owner}-${environment}-${AWS::AccountId}"
+      Tags:
+        - Key: owner
+          Value: alexortner
