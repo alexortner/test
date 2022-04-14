@@ -45,6 +45,15 @@ jobs:
           
       #- name: Upload templates to s3
       #  run: aws s3 cp ./infra/s3.yaml s3://alexortner-cf-templates
+      
+      
+      - name: Validate CloudFormation Script
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: AlexFromGithub
+          template: infra/s3.yaml
+          parameter-overrides: "owner=alexorner,environment=test"
+
 
 
     
