@@ -17,6 +17,8 @@ Resources:
     Description: "S3 Bucket for Images"
     Properties:
       BucketName: !Sub "${owner}-${environment}-${AWS::AccountId}"
+      VersioningConfiguration:
+        Status: Enabled
       Tags:
         - Key: owner
           Value: alexortner
